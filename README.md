@@ -104,12 +104,6 @@ The following properties are set on every event:
 - `statusCode` - status code, e.g. `200`
 - `responseTimeMs` - time-to-first-byte of the response in milliseconds
 
-### CloudWatch Configuration
-- To send events to Honeycomb, set `type` to `cloudwatch`
-- Set `region` to region you want to use (default `eu-west-1`)
-- Set `namespace` to set metric's namespace (default: `artillery`) 
-- Set `name` to set metric's dimention `Name` (default: `loadtest`) 
-
 #### Example configuration
 
 ```
@@ -120,6 +114,25 @@ config:
         apiKey: "{{ $processEnvironment.HONEYCOMB_API_KEY" }}
         dataset: load-testing
 ```
+
+
+### CloudWatch Configuration
+- To send events to AWS CloudWatch, set `type` to `cloudwatch`
+- Set `region` to region you want to use (default `eu-west-1`)
+- Set `namespace` to set metric's namespace (default: `artillery`) 
+- Set `name` to set metric's dimention `Name` (default: `loadtest`) 
+
+#### Example configuration
+
+```
+config:
+  "plugins":
+    publish-metrics:
+      - type: cloudwatch
+        region: "eu-west-1"
+        name: "example"
+```
+
 
 ### StatsD Configuration
 
